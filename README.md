@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://joonasil.users.cs.helsinki.fi/muistilista/)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki dokumentaatiooni](doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
