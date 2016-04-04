@@ -12,5 +12,5 @@ Yleisiä linkkejä:
 
 ## HTML Suunnitelmat
 
-[etusivu](http://joonasil.users.cs.helsinki.fi/muistilista)
-[kirjatumissivu](http://joonasil.users.cs.helsinki.fi/muistilista/login)
+* [etusivu](http://joonasil.users.cs.helsinki.fi/muistilista)
+* [kirjatumissivu](http://joonasil.users.cs.helsinki.fi/muistilista/login)
