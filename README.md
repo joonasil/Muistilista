@@ -14,3 +14,4 @@ Yleisiä linkkejä:
 
 * [etusivu](http://joonasil.users.cs.helsinki.fi/muistilista)
 * [kirjatumissivu](http://joonasil.users.cs.helsinki.fi/muistilista/login)
+* [listaussivu](http://joonasil.users.cs.helsinki.fi/muistilista/list)
