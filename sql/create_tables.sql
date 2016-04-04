@@ -9,7 +9,7 @@ CREATE TABLE Errand(
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES Account(id),
     description varchar(200) NOT NULL,
-    priority INTEGER NOT NULL
+    priority INTEGER NOT NULL,
     status boolean DEFAULT FALSE,
     deadline DATE
 );
