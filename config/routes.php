@@ -15,3 +15,7 @@
   $routes->get('/list', function() {
       HelloWorldController::todo();
   });
+  
+  $routes->get('/tietokantayhteys', function(){
+    DB::test_connection();
+  });

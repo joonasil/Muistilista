@@ -19,4 +19,5 @@
     public static function todo(){
         View::make('suunnitelmat/list.html');
     }
+    
   }
