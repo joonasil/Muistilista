@@ -1,31 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Käyttäjän Joonas muistilista</h1>
+<div class="row">
+    <h1 class="page-header">Käyttäjän Joonas muistilista</h1>
+</div>    
+    
+<div class="row">
+    <div class="col-md-2">
+        <ul class="list-unstyled">
+            <li><a href="#">Kaikki askareet</a></li>
+            <li><a href="#">Listat tulee tähän</a></li>
+        </ul>  
+    </div>
+    
+    <div class="col-md-10">
+        <p>
+            <a href="{{base_path}}/list/add" class="btn btn-sm btn-success">Lisää askare</a>
+        </p>
 
-  <p>
-    <a href="#" class="btn btn-sm btn-success">Lisää askare</a>
-  </p>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Askare</th>
+                    <th>Tärkeysaste</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Askare</th>
-        <th>Tärkeysaste</th>
-        <th>Deadline</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <!-- Listataan pelit tähän -->
-      <tr>
-        <td>Tee HTML suunnitelmat.</td>
-        <td>10</td>
-        <td>4.4.2016</td>
-        <td><label class="btn btn-sm btn-danger">kesken</label></td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
-      </tr>
-    </tbody>
-  </table>
+            <tbody>
+                <!-- Listataan askareet tähän -->
+                <tr>
+                    <td>Tee HTML suunnitelmat.</td>
+                    <td>10</td>
+                    <td>4.4.2016</td>
+                    <td><label class="btn btn-sm btn-danger">kesken</label></td>
+                    <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+  
 {% endblock %}

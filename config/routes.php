@@ -19,3 +19,11 @@
   $routes->get('/tietokantayhteys', function(){
     DB::test_connection();
   });
+  
+  $routes->get('/register', function(){
+      HelloWorldController::register();
+  });
+  
+  $routes->get('/list/add', function(){
+      HelloWorldController::add();
+  });

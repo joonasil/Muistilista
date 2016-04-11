@@ -20,4 +20,12 @@
         View::make('suunnitelmat/list.html');
     }
     
+    public static function register() {
+        View::make('suunnitelmat/register.html');
+    }
+    
+    public static function add() {
+        View::make('suunnitelmat/add.html');
+    }
+    
   }
