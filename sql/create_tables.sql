@@ -2,7 +2,8 @@
 CREATE TABLE Account(
     id SERIAL PRIMARY KEY,
     username varchar(20) NOT NULL,
-    password varchar(20) NOT NULL
+    password varchar(20) NOT NULL,
+    is_admin boolean
 );
 
 CREATE TABLE Errand(
@@ -10,8 +11,8 @@ CREATE TABLE Errand(
     user_id INTEGER REFERENCES Account(id),
     description varchar(200) NOT NULL,
     priority INTEGER NOT NULL,
-    status boolean DEFAULT FALSE,
-    deadline DATE
+    completed boolean DEFAULT FALSE,
+    deadline varchar(10)
 );
 
 CREATE TABLE Category(

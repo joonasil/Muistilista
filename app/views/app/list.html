@@ -29,14 +29,20 @@
             </thead>
 
             <tbody>
-                <!-- Listataan askareet tähän -->
+                {% for errand in errands %}
                 <tr>
-                    <td>Tee HTML suunnitelmat.</td>
-                    <td>10</td>
-                    <td>4.4.2016</td>
-                    <td><label class="btn btn-sm btn-danger">kesken</label></td>
-                    <th><a class="btn btn-default btn-sm" href="{{base_path}}/list/edit">Muokkaa</a></th>
+                    <td>{{errand.description}}</td>
+                    <td>{{errand.priority}}</td>
+                    <td>{{errand.deadline}}</td>
+                    <td>
+                        {% if errand.completed %}
+                            <label class="label label-success">suoritettu</label></td>
+                        {% else %}
+                            <label class="label label-danger">kesken</label></td>
+                        {% endif %}
+                    <th><a class="btn btn-default btn-sm" href="{{base_path}}/list/{{errand.id}}/edit">Muokkaa</a></th>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

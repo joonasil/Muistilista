@@ -13,7 +13,7 @@
   });
   
   $routes->get('/list', function() {
-      HelloWorldController::todo();
+      ErrandController::index();
   });
   
   $routes->get('/tietokantayhteys', function(){
@@ -26,4 +26,12 @@
   
   $routes->get('/list/add', function(){
       HelloWorldController::add();
+  });
+  
+  $routes->get('/list/edit', function(){
+      HelloWorldController::edit();
+  });
+  
+  $routes->get('/list/:id/edit', function($id){
+      ErrandController::edit($id);
   });
