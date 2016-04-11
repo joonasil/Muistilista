@@ -28,6 +28,10 @@
       HelloWorldController::add();
   });
   
+  $routes->post('/list/add', function(){
+  ErrandController::store();
+  });
+  
   $routes->get('/list/edit', function(){
       HelloWorldController::edit();
   });
@@ -35,3 +39,5 @@
   $routes->get('/list/:id/edit', function($id){
       ErrandController::edit($id);
   });
+  
+  

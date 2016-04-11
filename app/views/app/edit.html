@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="page-header">Lisää askare</h1>
+<h1 class="page-header">Muokkaa askaretta</h1>
 
 <form>
     <div class="form-group">
@@ -8,6 +8,7 @@
         <input type="text" class="form-control" value="{{errand.description}}">
     </div>
     
+    <!--Miten ihmeessä saan nää formin tyypit ja php tyypit yhteneväksi-->
     <div class="form-group">
         <label>Tärkeysaste</label>
         <input type="number" class="form-control" value="10">
