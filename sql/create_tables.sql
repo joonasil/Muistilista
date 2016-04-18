@@ -8,7 +8,7 @@ CREATE TABLE Account(
 
 CREATE TABLE Errand(
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES Account(id),
+    user_id INTEGER REFERENCES Account(id) ON DELETE CASCADE,
     description varchar(200) NOT NULL,
     priority INTEGER NOT NULL,
     completed boolean DEFAULT FALSE,
@@ -21,6 +21,6 @@ CREATE TABLE Category(
 );
 
 CREATE TABLE Categories(
-    errand_id INTEGER REFERENCES Errand(id),
-    category_id INTEGER REFERENCES Category(id)
+    errand_id INTEGER REFERENCES Errand(id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES Category(id) ON DELETE CASCADE
 );
