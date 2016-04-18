@@ -56,4 +56,16 @@ class Errand extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+    
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Errand SET (user_id, description, priority, deadline) = (1, :description, :priority, :deadline) WHERE id=:id RETURNING id');
+        $query->execute(array('description' => $this->description, 'priority' => $this->priority, 'deadline' => $this->deadline, 'id' => $this->id));
+//        $row = $query->fetch();
+        
+    }
+    
+    public static function delete($id) {
+        $query = DB::connection()->prepare('DELETE FROM Errand WHERE id=:id');
+        $query->execute(array('id' => $id)); 
+    }
 }

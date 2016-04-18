@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="page-header">Muokkaa askaretta</h1>
+<h1 class="page-header">Lisää askare</h1>
 
-<form method="post" action="{{base_path}}/list/{{errand.id}}/edit">
+<form method="post" action="{{base_path}}/list/add">
     <div class="form-group">
         <label>Askare</label>
-        <input type="text" class="form-control" value="{{errand.description}}" name="description">
+        <input type="text" class="form-control" name="description" required="required">
     </div>
     
     <div class="form-group">
         <label>Tärkeysaste</label>
-        <input type="number" class="form-control" value="{{errand.priority}}" name="priority">
+        <input type="number" class="form-control" name="priority" required="required">
     </div>
     
     <div class="form-group">
         <label>Deadline</label>
-        <input type="date" class="form-control" value="{{errand.deadline}}" name="deadline">
+        <input type="date" class="form-control" name="deadline" required="required">
     </div>
     
     <div class="form-group">
@@ -27,6 +27,6 @@
         </select>
     </div>
     
-    <button type="submit" class="btn btn-success btn-lg">Vahvista</button>
+    <button type="submit" class="btn btn-success btn-lg">Lisää</button>
 </form>
 {% endblock %}

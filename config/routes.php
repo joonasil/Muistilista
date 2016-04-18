@@ -25,7 +25,7 @@
   });
   
   $routes->get('/list/add', function(){
-      HelloWorldController::add();
+      ErrandController::add();
   });
   
   $routes->post('/list/add', function(){
@@ -38,6 +38,14 @@
   
   $routes->get('/list/:id/edit', function($id){
       ErrandController::edit($id);
+  });
+  
+  $routes->post('/list/:id/edit', function($id){
+      ErrandController::update($id);
+  });
+  
+  $routes->post('/list/:id/delete', function($id){
+      ErrandController::delete($id);
   });
   
   
