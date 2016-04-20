@@ -9,7 +9,11 @@
   });
 
   $routes->get('/login', function() {
-      HelloWorldController::login();
+      UserController::login();
+  });
+  
+  $routes->post('/login', function() {
+      UserController::handle_login();
   });
   
   $routes->get('/list', function() {
@@ -21,7 +25,11 @@
   });
   
   $routes->get('/register', function(){
-      HelloWorldController::register();
+      UserController::register();
+  });
+  
+  $routes->post('/register', function(){
+      UserController::hadle_register();
   });
   
   $routes->get('/list/add', function(){

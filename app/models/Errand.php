@@ -66,6 +66,8 @@ class Errand extends BaseModel {
     
     public static function delete($id) {
         $query = DB::connection()->prepare('DELETE FROM Errand WHERE id=:id');
-        $query->execute(array('id' => $id)); 
+        $query2 = DB::connection()->prepare('DELETE FROM Categories WHERE errand_id=:id');
+        $query2->execute(array('id' => $id));
+        $query->execute(array('id' => $id));
     }
 }

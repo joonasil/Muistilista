@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="row">
-    <h1 class="page-header">Käyttäjän Joonas muistilista</h1>
+    <h1 class="page-header">Käyttäjän {{user_logged_in.username}} muistilista</h1>
 </div>    
 
-<!--<div class="alert alert-success">{{message}}</div>-->
+{% if message != null %}
+    <div class="alert alert-success">{{message}}</div>
+{% endif %}
+
 <div class="row">
     <div class="col-md-2">
         <h5><u>Luokat</u></h6>

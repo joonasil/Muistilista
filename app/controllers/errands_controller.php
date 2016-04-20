@@ -4,7 +4,8 @@ class ErrandController extends BaseController{
     public static function index(){
         $errands = Errand::all();
         $categories = Category::all();
-        View::make('app/list.html', array('errands' => $errands, 'categories' => $categories));
+        $user = self::get_user_logged_in();
+        View::make('app/list.html', array('errands' => $errands, 'categories' => $categories, 'user_logged_in' => $user));
     }
     
     public static function edit($id){
