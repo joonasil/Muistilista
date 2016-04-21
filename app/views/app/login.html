@@ -5,6 +5,9 @@
 {% if error != null %}
     <div class="alert alert-danger">{{error}}</div>
 {% endif %}
+{% if message != null %}
+    <div class="alert alert-success">{{message}}</div>
+{% endif %}
 
 <form method="post" action="{{base_path}}/login">
     <div class="form-group">

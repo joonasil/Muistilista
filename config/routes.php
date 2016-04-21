@@ -56,4 +56,8 @@
       ErrandController::delete($id);
   });
   
+  $routes->post('/logout', function(){
+      UserController::logout();
+  });
+  
   

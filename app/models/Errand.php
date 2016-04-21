@@ -50,6 +50,31 @@ class Errand extends BaseModel {
         return null;
     }
     
+    public static function all_user() {
+        $query = DB::connection()->prepare('SELECT * FROM Errand WHERE user_id = :user ORDER BY priority');
+        
+        $query->execute(array('user' => $_SESSION['user']));
+        
+        $rows = $query->fetchAll();
+        $errands = array();
+        
+        if($rows){
+            foreach($rows as $row){
+                $errands[] = new Errand(array(
+                    'id' => (int) $row['id'],
+                    'user_id' => (int) $row['user_id'],
+                    'description' => $row['description'],
+                    'priority' => (int) $row['priority'],
+                    'completed' => (boolean) $row['completed'],
+                    'deadline' => $row['deadline']
+                ));
+            }
+
+            return $errands;
+        }
+        return null;
+    }
+
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO Errand (user_id, description, priority, deadline) VALUES (1, :description, :priority, :deadline) RETURNING id');
         $query->execute(array('description' => $this->description, 'priority' => $this->priority, 'deadline' => $this->deadline));

@@ -77,7 +77,7 @@ class Account extends BaseModel {
     
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO Account (username, password, is_admin) VALUES (:username, :password, :is_admin) RETURNING id');
-        $query->execute(array('username' => $this->description, 'password' => $this->priority, 'is_admin' => $this->deadline));
+        $query->execute(array('username' => $this->username, 'password' => $this->password, 'is_admin' => $this->is_admin));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
