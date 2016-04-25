@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-header">Lisää uusi luokka</h1>
+
+{% if errors != null %}
+    {% for error in errors %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" action="{{base_path}}/category/add">
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" class="form-control" name="name" required="required">
+    </div>
+    
+    <button type="submit" class="btn btn-success btn-lg">Luo</button>
+</form>
+{% endblock %}

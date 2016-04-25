@@ -20,6 +20,22 @@
       ErrandController::index();
   });
   
+   $routes->get('/list/add', function(){
+      ErrandController::add();
+  });
+  
+  $routes->post('/list/add', function(){
+    ErrandController::store();
+  });
+  
+  $routes->get('/list/:id', function($id) {
+      ErrandController::subindex($id);
+  });
+  
+  $routes->post('/list/:id/toggle', function($id) {
+      ErrandController::toggle($id);
+  });
+  
   $routes->get('/tietokantayhteys', function(){
     DB::test_connection();
   });
@@ -32,13 +48,7 @@
       UserController::hadle_register();
   });
   
-  $routes->get('/list/add', function(){
-      ErrandController::add();
-  });
-  
-  $routes->post('/list/add', function(){
-  ErrandController::store();
-  });
+ 
   
   $routes->get('/list/edit', function(){
       HelloWorldController::edit();
@@ -58,6 +68,14 @@
   
   $routes->post('/logout', function(){
       UserController::logout();
+  });
+  
+  $routes->get('/category/add', function(){
+      ErrandController::add_category(); 
+  });
+  
+  $routes->post('/category/add', function(){
+      ErrandController::save_category(); 
   });
   
   

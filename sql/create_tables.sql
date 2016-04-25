@@ -17,6 +17,7 @@ CREATE TABLE Errand(
 
 CREATE TABLE Category(
     id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES Account(id) ON DELETE CASCADE,
     category_name varchar(20) NOT NULL
 );
 

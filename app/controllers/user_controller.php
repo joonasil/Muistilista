@@ -25,22 +25,23 @@ class UserController extends BaseController{
     
     public static function hadle_register(){
         $params = $_POST;
-        
-        $user = Account::find_name($params['username']);
         $user_id = self::get_user_logged_in();
-        if($user){
-            View::make('app/register.html', array('error' => 'Käyttäjänimi varattu!', 'user_logged_in' => $user_id));
-        }
+        
         if(!($params['password1'] == $params['password2'])){
-            View::make('app/register.html', array('error' => 'Salasanat eivät täsmää!', 'user_logged_in' => $user_id));
+            View::make('app/register.html', array('errors' => array('error' => 'Salasanat eivät täsmää!'), 'user_logged_in' => $user_id));
         }
+        
         $account = new Account(array(
             'username' => $params['username'],
             'password' => $params['password1'],
             'is_admin' => 'false'
         ));
-        $account->save();
-        Redirect::to('/', array('message' => 'Rekisteröityminen valmis!'));
+        $errors = $account->errors();
+        if(count($errors) == 0){
+            $_SESSION['user'] = $account->save();
+            Redirect::to('/', array('message' => 'Rekisteröityminen valmis!'));
+        }
+        View::make('app/register.html', array('errors' => $errors, 'user_logged_in' => $user_id));
     }
     
     public static function logout(){

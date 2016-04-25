@@ -5,6 +5,7 @@ class Account extends BaseModel {
     
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_name', 'validate_password');
     }
     
     public static function all() {
@@ -80,6 +81,33 @@ class Account extends BaseModel {
         $query->execute(array('username' => $this->username, 'password' => $this->password, 'is_admin' => $this->is_admin));
         $row = $query->fetch();
         $this->id = $row['id'];
+        return $this->id;
+    }
+    
+    public function validate_name(){
+        $errors = array();
+        if(self::validate_empty_string($this->username)){
+            $errors[] = 'Nimi ei saa olla tyhjä!';
+        }
+        if(self::validate_string_length($this->username, 3)){
+            $errors[] = 'Nimen tulee olla vähintään kolme merkkiä pitkä!';
+        }
+        $user = self::find_name($this->username);
+        if($user){
+            $errors[] = 'Käyttäjänimi varattu!';
+        }
+        return $errors;
+    }
+    
+    public function validate_password(){
+        $errors = array();
+        if(self::validate_empty_string($this->password)){
+            $errors[] = 'Salasana ei saa olla tyhjä!';
+        }
+        if(self::validate_string_length($this->password, 3)){
+            $errors[] = 'Salasanan tulee olla vähintään kolme merkkiä pitkä!';
+        }
+        return $errors;
     }
 }
 

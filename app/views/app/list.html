@@ -10,19 +10,33 @@
 
 <div class="row">
     <div class="col-md-2">
-        <h5><u>Luokat</u></h6>
-        <ul class="list-inline">
-            <li><a href="#">Kaikki askareet</a></li>
-            {% for category in categories %}
-            <li><a href="#">{{category.name}}</a></li>
-            {% endfor %}
-        </ul>  
+        
+        <table class="table small table-bordered">
+            <thead>
+                <tr>
+                    <th>Luokat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <td><a href="{{base_path}}/list">Kaikki askareet</a></td> 
+                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td><a href="{{base_path}}/list/{{category.id}}">{{category.name}}</a></td>
+                        <td><button class="btn-xs btn-danger">X</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>  
     </div>
     
     <div class="col-md-10">
         <p>
             <a href="{{base_path}}/list/add" class="btn btn-sm btn-success">Lisää askare</a>
-            <a href="{{base_path}}/list/add_category" class="btn btn-sm btn-success">Luo uusi luokka</a>
+            <a href="{{base_path}}/category/add" class="btn btn-sm btn-success">Luo uusi luokka</a>
         </p>
 
         <table class="table table-striped table-bordered">
@@ -45,13 +59,17 @@
                     <td>{{errand.deadline}}</td>
                     <td>
                         {% if errand.completed %}
-                        <button class="btn btn-success">suoritettu</button></td>
+                        <form method="post" action="{{base_path}}/list/{{errand.id}}/toggle">
+                            <button class="btn btn-success" type="submit">suoritettu</button></td>
+                        </form>
                         {% else %}
-                            <button class="btn btn-danger">kesken</button></td>
+                        <form method="post" action="{{base_path}}/list/{{errand.id}}/toggle">
+                            <button class="btn btn-danger" type="submit">kesken</button></td>
+                        </form>
                         {% endif %}
-                    <th><a class="btn btn-default btn-sm" href="{{base_path}}/list/{{errand.id}}/edit">Muokkaa</a></th>
+                    <td><a class="btn btn-default btn-sm" href="{{base_path}}/list/{{errand.id}}/edit">Muokkaa</a></td>
                     <form method="post" action="{{base_path}}/list/{{errand.id}}/delete">
-                        <th><button class="btn btn-danger btn-sm" type="submit">Poista</button></th>
+                        <td><button class="btn btn-danger btn-sm" type="submit">Poista</button></td>
                     </form>
                 </tr>
                 {% endfor %}

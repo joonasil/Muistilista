@@ -2,6 +2,12 @@
 {% block content %}
 <h1 class="page-header">Lisää askare</h1>
 
+{% if errors != null %}
+    {% for error in errors %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% endfor %}
+{% endif %}
+
 <form method="post" action="{{base_path}}/list/add">
     <div class="form-group">
         <label>Askare</label>

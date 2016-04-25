@@ -2,8 +2,10 @@
 {% block content %}
 <h1 class="page-header">Rekisteröidy</h1>
 
-{% if error != null %}
-    <div class="alert alert-danger">{{error}}</div>
+{% if errors != null %}
+    {% for error in errors %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% endfor %}
 {% endif %}
 
 <form method="post" action="{{base_path}}/register">
