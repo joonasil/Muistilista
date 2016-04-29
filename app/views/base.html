@@ -41,8 +41,7 @@
                     <!-- Navigaation linkit -->
                     <li><a href="{{base_path}}/list">Muistilista</a></li>
                     {% if user_logged_in.is_admin %}
-                        <li><a href="{{base_path}}/hiekkalaatikko">Sandbox</a></li>
-                        <li><a href="{{base_path}}/tietokantayhteys">Database</a></li>
+                        <li><a href="{{base_path}}/user">Käyttäjät</a></li>
                     {% endif %}
                 </ul>
                 <form method="post" action="{{base_path}}/logout" id ="logout">

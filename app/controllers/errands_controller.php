@@ -55,7 +55,14 @@ class ErrandController extends BaseController{
         View::make('app/category.html', array('errors' => $errors, 'user_logged_in' => $user));
     }
     
-    public static function store(){
+    public static function delete_category($id){
+        self::check_logged_in();
+        $user = self::get_user_logged_in();
+        Category::delete($id);
+        Redirect::to('/list', array('message' => 'Luokka poistettu!', 'user_logged_in' => $user));
+    }
+
+        public static function store(){
         self::check_logged_in();
         $user = self::get_user_logged_in();
         $params = $_POST;

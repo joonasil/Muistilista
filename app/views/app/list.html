@@ -25,7 +25,9 @@
                 {% for category in categories %}
                     <tr>
                         <td><a href="{{base_path}}/list/{{category.id}}">{{category.name}}</a></td>
-                        <td><button class="btn-xs btn-danger">X</button></td>
+                        <form method="post" action="{{base_path}}/category/{{category.id}}/delete">
+                            <td><button class="btn-xs btn-danger" type="submit">X</button></td>
+                        </form>
                     </tr>
                 {% endfor %}
             </tbody>

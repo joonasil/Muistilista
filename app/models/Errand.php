@@ -109,6 +109,8 @@ class Errand extends BaseModel {
     }
     
     public function update(){
+        self::toggle();
+        self::toggle();
         $query = DB::connection()->prepare('UPDATE Errand SET (user_id, description, priority,completed , deadline) = (:user_id, :description, :priority, :completed, :deadline) WHERE id=:id RETURNING id');
         $query->execute(array('user_id' => $_SESSION['user'],'description' => $this->description, 'priority' => $this->priority,'completed' => $this->completed, 'deadline' => $this->deadline, 'id' => $this->id));   
     }

@@ -84,6 +84,11 @@ class Account extends BaseModel {
         return $this->id;
     }
     
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Account SET (username, password, is_admin) = (:username, :password, :is_admin) WHERE id=:id');
+        $query->execute(array('username' => $this->username, 'password' => $this->password, 'is_admin' => $this->is_admin, 'id' => $this->id));   
+    }
+    
     public function validate_name(){
         $errors = array();
         if(self::validate_empty_string($this->username)){
@@ -108,6 +113,21 @@ class Account extends BaseModel {
             $errors[] = 'Salasanan tulee olla vähintään kolme merkkiä pitkä!';
         }
         return $errors;
+    }
+    
+    public function toggle_admin(){
+        if($this->is_admin){
+            $this->is_admin = 'false';
+        }else{
+            $this->is_admin = 'true';
+        }
+    }
+    
+    public static function delete($id) {
+        $query = DB::connection()->prepare('DELETE FROM Account WHERE id=:id');
+        $query2 = DB::connection()->prepare('DELETE FROM Errand WHERE user_id=:id');
+        $query2->execute(array('id' => $id));
+        $query->execute(array('id' => $id));
     }
 }
 

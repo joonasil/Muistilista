@@ -48,7 +48,21 @@
       UserController::hadle_register();
   });
   
- 
+  $routes->get('/user', function(){
+      UserController::list_users();
+  });
+  
+  $routes->post('/user/:id/toggle', function($id){
+      UserController::toggle_admin($id);
+  });
+  
+  $routes->post('/user/:id/delete', function($id){
+      UserController::delete($id);
+  });
+  
+  $routes->post('/category/:id/delete', function($id){
+      ErrandController::delete_category($id);
+  });
   
   $routes->get('/list/edit', function(){
       HelloWorldController::edit();

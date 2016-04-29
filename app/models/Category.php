@@ -76,4 +76,11 @@ class Category extends BaseModel {
         }
         return $errors;
     }
+    
+    public static function delete($id) {
+        $query = DB::connection()->prepare('DELETE FROM Category WHERE id=:id');
+        $query2 = DB::connection()->prepare('DELETE FROM Categories WHERE category_id=:id');
+        $query2->execute(array('id' => $id));
+        $query->execute(array('id' => $id));
+    }
 }

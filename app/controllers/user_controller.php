@@ -49,5 +49,38 @@ class UserController extends BaseController{
         $_SESSION['user'] = null;
         Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
     }
+    
+    public static function list_users(){
+        self::check_logged_in();
+        $user = self::get_user_logged_in();
+        if(!$user->is_admin){
+            Redirect::to('/', array('message' => 'Sivu sallittu vain admineille!'));
+        }
+        $users = Account::all();
+        View::make('app/users.html', array('users' => $users));
+    }
+    
+    public static function toggle_admin($id){
+        self::check_logged_in();
+        $user = Account::find($id);
+        if($user->username == 'Joonas'){
+            Redirect::to('/user', array('message' => 'Adminia Joonas ei voi poistaa!'));
+        }
+        $user->toggle_admin();
+        $user->update();
+        if($user->is_admin){
+            Redirect::to('/user', array('message' => 'Admin lisätty!'));
+        }
+        Redirect::to('/user', array('message' => 'Admin poistettu!'));
+    }
+    
+    public static function delete($id){
+        $user = Account::find($id);
+        if($user->username == 'Joonas'){
+            Redirect::to('/user', array('message' => 'Käyttäjää Joonas ei voi poistaa!'));
+        }
+        Account::delete($id);
+        Redirect::to('/user', array('message' => 'Käyttäjä poistettu!'));
+    }
 }
 
