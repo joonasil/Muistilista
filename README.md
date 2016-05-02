@@ -16,4 +16,5 @@ Yleisiä linkkejä:
 * [kirjatumissivu](http://joonasil.users.cs.helsinki.fi/muistilista/login)
 * [listaussivu](http://joonasil.users.cs.helsinki.fi/muistilista/list)
 
--en ehtinyt tekemään kirjatumista tämän viikon deadlineen mennessä :/
+-Sovellukseen voi rekisteröityä
+Admin käyttäjän tunnus on Admin ja salasana on admin
