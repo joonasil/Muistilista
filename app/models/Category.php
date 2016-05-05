@@ -8,6 +8,7 @@ class Category extends BaseModel {
         $this->validators = array('validate_name');
     }
     
+    //Metodi palauttaa listana kaikki kategoriat tietokannasta.
     public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Category');
         
@@ -26,6 +27,8 @@ class Category extends BaseModel {
         return $categories;
     }
     
+    //Metodi etsii tietokannasta kategoriaa id:n avulla ja palauttaa sen jos
+    //kategoria löytyy tietokannasta, muuten palauttaa null
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Category WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
@@ -43,6 +46,7 @@ class Category extends BaseModel {
         return null;
     }
     
+    //palauttaa kaikki tietyn käyttäjän kategoriat listana
     public static function find_user($id) {
         $query = DB::connection()->prepare('SELECT DISTINCT category_name, Category.id FROM Category, Account WHERE Category.user_id = :id');
         $query->execute(array('id' => $id));
@@ -59,6 +63,7 @@ class Category extends BaseModel {
         return $categories;
     }
     
+    //tallettaa uuden kategorian tietokantaan
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO Category (user_id, category_name) VALUES (:id, :name) RETURNING id');
         $query->execute(array('id' => $this->user_id, 'name' => $this->name));
@@ -66,7 +71,8 @@ class Category extends BaseModel {
         $this->id = $row['id'];
     }
     
-     public function validate_name(){
+    //validiointimetodi kategorian nimelle
+    public function validate_name(){
         $errors = array();
         if(self::validate_empty_string($this->name)){
             $errors[] = 'Luokan nimi ei saa olla tyhjä!';
@@ -77,6 +83,7 @@ class Category extends BaseModel {
         return $errors;
     }
     
+    //Metodi poistaa kyseisen kategorian tietokannasta
     public static function delete($id) {
         $query = DB::connection()->prepare('DELETE FROM Category WHERE id=:id');
         $query2 = DB::connection()->prepare('DELETE FROM Categories WHERE category_id=:id');

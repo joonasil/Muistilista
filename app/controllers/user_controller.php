@@ -1,6 +1,8 @@
 <?php
 
+//kontrolleri käyttäjiin littyville toiminnoille. Hoitaa käyttäjien rekisteröitymisen, kirjautumisen, poistamisen ja admin oikeuden lisäämisen.
 class UserController extends BaseController{
+    
     public static function login(){
         $user = self::get_user_logged_in();
         View::make('app/login.html', array('user_logged_in' => $user));

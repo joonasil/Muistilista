@@ -1,5 +1,6 @@
 <?php
-
+//Kontrolleri askareiden funktioille. Hoitaa askareiden luomisen, muokkaamisen, poistamisen ja listaamisen.
+//Lisäksi myös askareiden luokittelun funktiot ovat tässä kontrollerissa.
 class ErrandController extends BaseController{
     public static function index(){
         self::check_logged_in();
